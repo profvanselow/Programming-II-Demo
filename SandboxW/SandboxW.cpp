@@ -1,6 +1,8 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include "Date.h"
+#include "Accumulator.h"
 
 #include "meal_functions.h"
 void DemoIPO();
@@ -13,6 +15,8 @@ void stack_object_oriented_demo();
 int pop(void);
 int push(void);
 void DisplayMenu();
+void DemoDate();
+void AccumulatorDemo();
 
 int stack[100];
 int SP = 0;
@@ -31,7 +35,7 @@ class Stack {
   // must be public
   // no return type
   // if one isn't written the compiler makes one for you
-  // called automatically when create an instance of the class
+  // called automatically when an instance of the class is created
   // another name for an instance of a class is an object
   Stack(void) { SP = 0; }
   Stack(int p) { SP = p; }
@@ -45,7 +49,8 @@ int main() { DisplayMenu(); }
 
 void DisplayMenu() {
   int choice{};
-  while (choice != 7) {
+  int const QUIT = 9;
+  while (choice != QUIT) {
     std::cout << "Enter the number for what to see: \n";
     std::cout << "1. Total Meal Price Calculator \n";
     std::cout << "2. Functions fun\n";
@@ -53,7 +58,9 @@ void DisplayMenu() {
     std::cout << "4. Read from a file \n";
     std::cout << "5. Procedural stack \n";
     std::cout << "6. Object oriented stack \n";
-    std::cout << "7. Quit \n";
+    std::cout << "7. Date object \n";
+    std::cout << "8. Accumulator \n";
+    std::cout << "9. Quit \n";
     std::cin >> choice;
     switch (choice) {
       case 1:
@@ -74,11 +81,29 @@ void DisplayMenu() {
       case 6:
         stack_object_oriented_demo();
         break;
+      case 7:
+        DemoDate();
+        break;
+      case 8:
+        AccumulatorDemo();
+        break;
       default:
         std::cout << "Invalid choice \n";
         break;
     }
   }
+}
+
+void AccumulatorDemo() {
+  Accumulator acc;
+  acc.add(5);  // add 5 to the accumulator
+  reset(acc);  // reset the accumulator to 0
+  std::cout << "Friends!" << std::endl;
+}
+
+void DemoDate() {
+  Date my_date(2011, 10, 12); // makes an object
+  std::cout << my_date.getYear() << std::endl;  
 }
 
 void DemoIPO() {
