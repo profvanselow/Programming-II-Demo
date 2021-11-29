@@ -1,9 +1,13 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "Date.h"
-#include "Accumulator.h"
+#include <functional>
 
+#include "Accumulator.h"
+#include "Car.h"
+#include "Cat.h"
+#include "Date.h"
+#include "Dog.h"
 #include "meal_functions.h"
 void DemoIPO();
 void functionsFun();
@@ -17,9 +21,19 @@ int push(void);
 void DisplayMenu();
 void DemoDate();
 void AccumulatorDemo();
+void InheritanceDemo();
+void ExceptionsDemo();
 
 int stack[100];
 int SP = 0;
+
+int invoke(int x, int y, std::function<int(int, int)> func) {
+    return func(x, y); 
+}
+
+class my_exception : public std::exception {
+  using std::exception::exception;
+};
 
 class Stack {
  private:
@@ -45,7 +59,11 @@ class Stack {
 
 void Stack::push(int value) { stackstore[SP++] = value; }
 
-int main() { DisplayMenu(); }
+int main() {
+    
+
+    
+    DisplayMenu(); }
 
 void DisplayMenu() {
   int choice{};
@@ -60,7 +78,9 @@ void DisplayMenu() {
     std::cout << "6. Object oriented stack \n";
     std::cout << "7. Date object \n";
     std::cout << "8. Accumulator \n";
-    std::cout << "9. Quit \n";
+    std::cout << "9. Inheritance \n";
+    std::cout << "10. Exceptions \n";
+    std::cout << "11. Quit \n";
     std::cin >> choice;
     switch (choice) {
       case 1:
@@ -87,11 +107,74 @@ void DisplayMenu() {
       case 8:
         AccumulatorDemo();
         break;
+      case 9:
+        InheritanceDemo();
+        break;
+      case 10:
+        ExceptionsDemo();
+        break;
+      case 11:
+        break;
       default:
         std::cout << "Invalid choice \n";
         break;
+
     }
   }
+}
+
+void ExceptionsDemo() {
+  // what is an exception?
+  // 1) an error
+  // 2) a response to an exceptional circumstance that arises
+  // while a program is running
+  // 3) an event, which occurs during the execution of a program,
+  // that disrupts the normal flow of the program's instructions
+  // https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-errors
+
+  int num0 = 0;
+
+  try {
+    if (num0 == 0) {
+      // throw std::runtime_error("Math error: Attempted to divide by Zero\n");
+      // throw 1;
+      throw my_exception("My message");
+      // return 1;
+    }
+    int result = 5 / num0;
+  } catch (int a) {
+    std::cout << "Exception occurred. Value " << a << std::endl;
+  } catch (std::runtime_error &e) {
+    // prints that exception has occurred
+    // calls the what function
+    // using runtime_error object
+    std::cout << "Exception occurred" << std::endl << e.what();
+  } catch (my_exception &e) {
+    // prints that exception has occurred
+    // calls the what function
+    // using runtime_error object
+    std::cout << "Exception occurred" << std::endl << e.what();
+  }
+}
+
+void InheritanceDemo() {
+  Cat whiskers;
+  std::cout << whiskers.makeSound() << std::endl;
+  whiskers.set_height(11);
+  std::cout << whiskers.get_height() << std::endl;
+  whiskers.set_name("Whiskers");
+  std::cout << whiskers.get_name() << std::endl;
+  Dog fido;
+  std::cout << fido.makeSound() << std::endl;
+  Cat blanch("Blanch");
+  std::cout << blanch.get_name() << std::endl;
+  Dog molly("Molly");
+  std::cout << molly.get_name() << std::endl;
+
+  Pet *dale = new Dog("Dale");
+  std::cout << dale->get_name() << std::endl;
+  std::cout << dale->makeSound() << std::endl;
+  std::cout << static_cast<Dog *>(dale)->makeSound() << std::endl;
 }
 
 void AccumulatorDemo() {
@@ -102,8 +185,8 @@ void AccumulatorDemo() {
 }
 
 void DemoDate() {
-  Date my_date(2011, 10, 12); // makes an object
-  std::cout << my_date.getYear() << std::endl;  
+  Date my_date(2011, 10, 12);  // makes an object
+  std::cout << my_date.getYear() << std::endl;
 }
 
 void DemoIPO() {
