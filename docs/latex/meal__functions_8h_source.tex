@@ -1,0 +1,21 @@
+\hypertarget{meal__functions_8h_source}{}\doxysection{meal\+\_\+functions.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{keywordtype}{double} calculate\_total\_price(\textcolor{keywordtype}{double} meal\_price) \{}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5     \textcolor{keywordtype}{double} \textcolor{keyword}{const} LEE\_COUNTY\_SALES\_TAX\_RATE = .07;}
+\DoxyCodeLine{6     \textcolor{keywordtype}{double} \textcolor{keyword}{const} TIP\_RATE = .2;}
+\DoxyCodeLine{7     \textcolor{comment}{// processing}}
+\DoxyCodeLine{8     \textcolor{keywordtype}{double} tax\{ \};}
+\DoxyCodeLine{9     tax = meal\_price * LEE\_COUNTY\_SALES\_TAX\_RATE;}
+\DoxyCodeLine{10     \textcolor{keywordtype}{double} tip\{ \};}
+\DoxyCodeLine{11     tip = meal\_price * TIP\_RATE;}
+\DoxyCodeLine{12     \textcolor{keywordtype}{double} total\_price\{ \};}
+\DoxyCodeLine{13     total\_price = meal\_price + tax + tip;}
+\DoxyCodeLine{14     \textcolor{keywordflow}{return} total\_price;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \}}
+
+\end{DoxyCode}

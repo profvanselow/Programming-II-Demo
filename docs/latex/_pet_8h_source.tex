@@ -1,0 +1,26 @@
+\hypertarget{_pet_8h_source}{}\doxysection{Pet.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Animal.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_pet}{Pet}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_animal}{Animal}} \{}
+\DoxyCodeLine{7  \textcolor{comment}{//private:  // private == only accessible within this class}}
+\DoxyCodeLine{8  \textcolor{keyword}{protected}: \textcolor{comment}{// protected == only accessible within this }}
+\DoxyCodeLine{9      \textcolor{comment}{// class and any derived classes}}
+\DoxyCodeLine{10   std::string name;}
+\DoxyCodeLine{11   \textcolor{keywordtype}{bool} current\_rabies\_vax;}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13  \textcolor{keyword}{public}:}
+\DoxyCodeLine{14   \mbox{\hyperlink{class_pet}{Pet}}() \{ name = \textcolor{stringliteral}{"{}unknown"{}};  \}}
+\DoxyCodeLine{15   \mbox{\hyperlink{class_pet}{Pet}}(std::string n) \{ name = n; \}}
+\DoxyCodeLine{16   std::string get\_name() \{ \textcolor{keywordflow}{return} name; \}}
+\DoxyCodeLine{17   \textcolor{keywordtype}{void} set\_name(std::string n) \{ name = n; \}}
+\DoxyCodeLine{18   \textcolor{keywordtype}{bool} get\_current\_rabies\_vax() \{ \textcolor{keywordflow}{return} current\_rabies\_vax; \}}
+\DoxyCodeLine{19   \textcolor{keywordtype}{void} set\_current\_rabies\_vax(\textcolor{keywordtype}{bool} status) \{ current\_rabies\_vax = status; \}}
+\DoxyCodeLine{20   std::string makeSound() \{ \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}errrrrererere"{}}; \}}
+\DoxyCodeLine{21 \};}
+
+\end{DoxyCode}
