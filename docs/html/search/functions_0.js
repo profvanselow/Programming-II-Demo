@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['now_0',['now',['../class_time.html#a4e698154700835119a946be6071a0984',1,'Time']]]
+  ['accumulator_0',['Accumulator',['../class_accumulator.html#a19845ea4f3d7bee830437adcdf197e3e',1,'Accumulator']]],
+  ['add_1',['add',['../class_accumulator.html#a82662c9150d6ab598ef22939ce6dc542',1,'Accumulator']]]
 ];
