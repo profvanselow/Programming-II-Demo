@@ -29,14 +29,17 @@ class Time {
    * @param timemillis Number of milliseconds
    * passed since Jan 1, 1970.
    */
-  Time(int timemillis) {
+  explicit Time(int timemillis) noexcept {
     // the code
   }
   /**
    * Get the current time.
    *
    * @return A time object set to the current time. */
-  static Time now() {
+  static Time now() noexcept {
+      // auto f1() -> int;
     // the code }
+    Time t(0);
+    return t;
   }
 };

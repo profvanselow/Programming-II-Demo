@@ -10,11 +10,11 @@ class Date {
  public:
   Date(int year, int month, int day);
 
-  void SetDate(int year, int month, int day);
+  void SetDate(int year, int month, int day) noexcept;
 
-  int getYear() { return m_year; }
-  int getMonth() { return m_month; }
-  int getDay() { return m_day; }
+  int const getYear() noexcept { return m_year; }
+  int const getMonth() noexcept { return m_month; }
+  int const getDay() noexcept { return m_day; }
 };
 
 #endif

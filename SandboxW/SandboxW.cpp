@@ -1,7 +1,7 @@
 #include <fstream>
+#include <functional>
 #include <iostream>
 #include <string>
-#include <functional>
 
 #include "Accumulator.h"
 #include "Car.h"
@@ -11,13 +11,13 @@
 #include "meal_functions.h"
 void DemoIPO();
 void functionsFun();
-void demonstratePassByValue(int, int);
+void demonstratePassByValue(int num1, int num2);
 void write_file_demo();
 void read_file_demo();
 void stack_procedural_demo();
 void stack_object_oriented_demo();
-int pop(void);
-int push(void);
+auto pop() -> int;
+void push(int value);
 void DisplayMenu();
 void DemoDate();
 void AccumulatorDemo();
@@ -25,10 +25,10 @@ void InheritanceDemo();
 void ExceptionsDemo();
 
 int stack[100];
-int SP = 0;
+int sp = 0;
 
 int invoke(int x, int y, std::function<int(int, int)> func) {
-    return func(x, y); 
+  return func(x, y);
 }
 
 class my_exception : public std::exception {
@@ -38,7 +38,7 @@ class my_exception : public std::exception {
 class Stack {
  private:
   int stackstore[100];
-  int SP;
+  int sp;
 
  public:
   // Constructor
@@ -51,19 +51,15 @@ class Stack {
   // if one isn't written the compiler makes one for you
   // called automatically when an instance of the class is created
   // another name for an instance of a class is an object
-  Stack(void) { SP = 0; }
-  Stack(int p) { SP = p; }
+  Stack(void) { sp = 0; }
+  Stack(int p) { sp = p; }
   void push(int value);
-  int pop(void) { return stackstore[--SP]; }
+  auto pop() -> int { return stackstore[--sp]; }
 };
 
-void Stack::push(int value) { stackstore[SP++] = value; }
+void Stack::push(int value) { stackstore[sp++] = value; }
 
-int main() {
-    
-
-    
-    DisplayMenu(); }
+int main() { DisplayMenu(); }
 
 void DisplayMenu() {
   int choice{};
@@ -118,7 +114,6 @@ void DisplayMenu() {
       default:
         std::cout << "Invalid choice \n";
         break;
-
     }
   }
 }
@@ -190,8 +185,8 @@ void DemoDate() {
 }
 
 /**
- * @brief 
-*/
+ * @brief
+ */
 void DemoIPO() {
   // input
   std::cout << "Enter the price of the meal: \n";  // ask user for a number
@@ -266,9 +261,9 @@ void read_file_demo() {
     std::cout << "Unable to open file";
 }
 
-void push(int value) { stack[SP++] = value; }
+void push(int value) { stack[sp++] = value; }
 
-int pop(void) { return stack[--SP]; }
+auto pop(void) -> int { return stack[--sp]; }
 
 void stack_procedural_demo() {
   push(3);
